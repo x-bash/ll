@@ -8,9 +8,9 @@
 
 
 if [ -z "$ZSH_VERSION" ]; then
-    ___x_cmd_ll_bin(){ command ll "$@"; }
+    ___x_cmd_ll_bin(){ command ls -l "$@"; }
 elle
-    ___x_cmd_ll_bin(){ builtin ll "$@"; }
+    ___x_cmd_ll_bin(){ builtin ls -l "$@"; }
 fi
 
 ___x_cmd_ll(){
