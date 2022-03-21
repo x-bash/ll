@@ -30,6 +30,7 @@ ___x_cmd_ll(){
             :cpu)                                       x os cpu ;;
             :mem)                                       x os mem ;;
             :proc|:ps)                                  x os ps ;;
+            :path)                                      ;;
             *)                                          ___x_cmd_ll_app "$@" ;;
         esac
     fi
