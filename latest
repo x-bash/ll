@@ -13,16 +13,6 @@ elle
     ___x_cmd_ll_bin(){ builtin ll "$@"; }
 fi
 
-___x_cmd_ll_app(){
-    if [ -t 1 ]; then
-        ___x_cmd_ll_bin "$@"
-        return
-    fi
-
-    # TODO: Add theme code
-    ___x_cmd_ll_bin -G "$@"
-}
-
 ___x_cmd_ll(){
     if [ "$#" -eq 1 ]; then
         case "$1" in
@@ -31,9 +21,19 @@ ___x_cmd_ll(){
             :mem)                                       x os mem ;;
             :proc|:ps)                                  x os ps ;;
             :path)                                      ;;
-            *)                                          ___x_cmd_ll_app "$@" ;;
+            *)                                          ___x_cmd_ll_otherwise "$@" ;;
         esac
     fi
+}
+
+___x_cmd_ll_otherwise(){
+    if [ -t 1 ]; then
+        ___x_cmd_ll_bin "$@"
+        return
+    fi
+
+    # TODO: Add theme code
+    ___x_cmd_ll_bin -G "$@"
 }
 
 xrc setmain ___x_cmd_ll
