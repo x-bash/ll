@@ -22,7 +22,9 @@ ___x_cmd_ll(){
             :proc|:ps)                                  x os ps ;;
             *)                                          ___x_cmd_ll_otherwise "$@" ;;
         esac
+        return
     fi
+    ___x_cmd_ll_otherwise "$@"
 }
 
 ___x_cmd_ll_otherwise(){
